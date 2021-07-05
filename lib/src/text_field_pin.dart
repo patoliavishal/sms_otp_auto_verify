@@ -185,8 +185,13 @@ class _TextFieldPinState extends State<TextFieldPin> {
                       if (value.toString().length > 0) {
                         if (_nextFocus != mListOtpData.length) {
                           _nextFocus = i + 1;
-                          FocusScope.of(context)
-                              .requestFocus(focusNode[_nextFocus]);
+                          if (_nextFocus == mListOtpData.length) {
+                            FocusScope.of(context)
+                                .requestFocus(focusNode[_nextFocus - 1]);
+                          } else {
+                            FocusScope.of(context)
+                                .requestFocus(focusNode[_nextFocus]);
+                          }
                         } else {
                           _nextFocus = (mListOtpData.length-1) - 1;
                         }
